@@ -1,12 +1,14 @@
 <template>
     <div>
+        <cnode-header></cnode-header>
         <section id="list-page">
             <button v-on:click="getList">list</button><br>{{msg}}---{{data}}
         </section>
     </div>
 </template>
 <script>
-    import axios from 'axios'
+    import axios from 'axios';
+    import cnodeHeader from '../components/header'
     export default{
         data(){
             return {
@@ -15,7 +17,7 @@
             }
         },
         components:{
-
+            cnodeHeader
         },
         methods:{
             getList(){
