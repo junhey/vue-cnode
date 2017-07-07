@@ -1,8 +1,8 @@
-# vue-cnode
+# vue for cnode
 
-> A Vue.js project
+> Vue项目，使用了Vue，Vuex，Vue-router，Axios，Element-ui
 
-## Build Setup
+## 编译安装
 
 ``` bash
 # install dependencies
@@ -17,5 +17,14 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+## 参考文档
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+- [vue官网文档](https://github.com/vuejs/vue)
+
+- [axios文档](https://github.com/axios)
+
+- [element-ui文档](https://github.com/ElemeFE/element)
+
+- [vue-loader](http://vuejs.github.io/vue-loader)
+
+- [guide](http://vuejs-templates.github.io/webpack/)
