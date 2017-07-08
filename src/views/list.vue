@@ -1,23 +1,26 @@
 <template>
     <div>
         <cnode-header></cnode-header>
-        <section id="list-page">
-            <button v-on:click="getList">list</button><br>{{msg}}---{{data}}
-        </section>
+        <list-content :listData="listData"></list-content>
     </div>
 </template>
 <script>
+    require('../assets/scss/reset.css');
+
     import axios from 'axios';
-    import cnodeHeader from '../components/header'
+    import cnodeHeader from '../components/header';
+    import listContent from '../components/listContent'
     export default{
+        mounted(){
+            this.getList();
+        },
         data(){
             return {
-                msg:'hello axios',
-                data:[]
+                listData:[]
             }
         },
         components:{
-            cnodeHeader
+            cnodeHeader,listContent
         },
         methods:{
             getList(){
@@ -31,13 +34,13 @@
                     }
                 }).then(function(res){
                     console.log(res);
-                    console.log(_this);
-                    _this.data=res;
+                    if(res.status===200){
+                        _this.listData=res.data.data;
+                    }else{
+                        console.log('网络错误');
+                    }
                 });
             }
         }
     }
 </script>
-<style lang="scss" scoped>
-    
-</style>
