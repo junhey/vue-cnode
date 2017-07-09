@@ -1,6 +1,6 @@
 <template>
     <div>
-        <cnode-header></cnode-header>
+        <cnode-header @changeTab="changeTab"></cnode-header>
         <list-content :listData="listData"></list-content>
     </div>
 </template>
@@ -16,6 +16,7 @@
         },
         data(){
             return {
+                tab:'',
                 listData:[]
             }
         },
@@ -29,7 +30,7 @@
                     params:{
                         page:1,
                         limit:20,
-                        tab:'all',
+                        tab:_this.tab||'all',
                         mdrender:true
                     }
                 }).then(function(res){
@@ -40,6 +41,10 @@
                         console.log('网络错误');
                     }
                 });
+            },
+            changeTab:function(tab){
+                this.tab=tab;
+                this.getList();
             }
         }
     }
