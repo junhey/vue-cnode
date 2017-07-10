@@ -8,7 +8,7 @@
     require('../assets/scss/reset.css');
 
     import axios from 'axios';
-    import cnodeHeader from '../components/header';
+    import cnodeHeader from '../components/listHeader';
     import listContent from '../components/listContent'
     export default{
         mounted(){

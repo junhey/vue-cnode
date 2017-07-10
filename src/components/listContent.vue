@@ -6,7 +6,7 @@
                 <div class="list-detail">
                     <div class="list-title">{{item.title}}</div>
                     <div class="list-time">{{item.last_reply_at | fotmatTimeStr(true)}}</div>
-                    <div class="list-view">{{item.reply_count}}/{{item.visit_count}}</div>
+                    <div class="list-view"><span :class="getTabInfo(item.tab, item.good, item.top, true)" v-text="getTabInfo(item.tab, item.good, item.top, false)"></span> {{item.reply_count}}/{{item.visit_count}}</div>
                 </div>
             </router-link>
         </div>
@@ -28,7 +28,10 @@
         },
         props: ['listData'],
         methods:{
-
+            // 获取不同tab的样式或者标题
+            getTabInfo(tab, good, top, isClass) {
+                return utils.getTabInfo(tab, good, top, isClass);
+            },
         }
     }
 </script>

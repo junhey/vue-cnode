@@ -7,7 +7,7 @@
                     <li>发布于{{topicData.create_at | fotmatTimeStr(true)}}</li>
                     <li>作者{{topicData.author.loginname}}</li>
                     <li>浏览量：{{topicData.visit_count}}次</li>
-                    <li>来自{{topicData.tab}}</li>
+                    <li>来自{{getTabInfo(topicData.tab,false,false,false)}}</li>
                 </ul>
             </div>
             <div class="topic-content markdown-body" v-html="topicData.content"></div>
@@ -23,6 +23,7 @@
     import utils from '../libs/utils.js';
     export default{
         filters:{
+            //格式化时间
             fotmatTimeStr(time,isFromNow){
                 return utils.getLastTimeStr(time, isFromNow);
             }
@@ -40,6 +41,7 @@
             this.getTopic();
         },
         methods:{
+            //获取文章内容
             getTopic(){
                 let _this=this;
                 axios.get('https://cnodejs.org/api/v1/topic/'+ this.topicId).then(function(res){
@@ -55,7 +57,11 @@
                         console.log('网络错误');
                     }
                 });
-            }
+            },
+            // 获取不同tab的样式或者标题
+            getTabInfo(tab, good, top, isClass) {
+                return utils.getTabInfo(tab, good, top, isClass);
+            },
         },
         components:{
             topicReply
