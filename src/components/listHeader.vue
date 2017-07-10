@@ -2,11 +2,11 @@
     <div>
         <div class="nav">
             <ul>
-                <li class="active" @click="selectTab" data-navSelect='all'>全部</li>
-                <li @click="selectTab" data-navSelect='good'>精华</li>
-                <li @click="selectTab" data-navSelect='share'>分享</li>
-                <li @click="selectTab" data-navSelect='ask'>问答</li>
-                <li @click="selectTab" data-navSelect='job'>招聘</li>
+                <li :class="navSelect=='all'?'active':''" @click="selectTab" data-navSelect='all'>全部</li>
+                <li :class="navSelect=='good'?'active':''" @click="selectTab" data-navSelect='good'>精华</li>
+                <li :class="navSelect=='share'?'active':''" @click="selectTab" data-navSelect='share'>分享</li>
+                <li :class="navSelect=='ask'?'active':''" @click="selectTab" data-navSelect='ask'>问答</li>
+                <li :class="navSelect=='job'?'active':''" @click="selectTab" data-navSelect='job'>招聘</li>
             </ul>
         </div>
     </div>
@@ -40,7 +40,7 @@
                 line-height: 40px;
                 font-size: 16px;
                 &.active{
-                    font-size: 20rpx;
+                    font-size: 20px;
                     font-weight: bold;
                 }
                 
