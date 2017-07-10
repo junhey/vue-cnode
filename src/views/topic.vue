@@ -4,10 +4,10 @@
             <div class="topic-title">{{topicData.title}}</div>
             <div class="topic-desc">
                 <ul>
-                    <li>发布于{{topicData.create_at | fotmatTimeStr(true)}}</li>
-                    <li>作者{{topicData.author.loginname}}</li>
-                    <li>浏览量：{{topicData.visit_count}}次</li>
-                    <li>来自{{getTabInfo(topicData.tab,false,false,false)}}</li>
+                    <li>发布于:{{topicData.create_at | fotmatTimeStr(true)}}</li>
+                    <li>作者:{{topicData.author.loginname}}</li>
+                    <li>浏览量:{{topicData.visit_count}}次</li>
+                    <li>来自:{{getTabInfo(topicData.tab,false,false,false)}}</li>
                 </ul>
             </div>
             <div class="topic-content markdown-body" v-html="topicData.content"></div>
@@ -31,7 +31,7 @@
         data(){
             return {
                 topicId:'',
-                noData:'',
+                noData:false,
                 topicData:[]
             }
         },

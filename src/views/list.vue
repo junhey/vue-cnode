@@ -6,18 +6,29 @@
 </template>
 <script>
     require('../assets/scss/reset.css');
-
+    import $ from 'webpack-zepto';
+    import utils from '../libs/utils.js';
     import axios from 'axios';
     import cnodeHeader from '../components/listHeader';
     import listContent from '../components/listContent'
     export default{
         mounted(){
+            //初始化数据
             this.getList();
+            // 滚动加载
+            $(window).on('scroll', utils.throttle(this.getScrollData, 300, 1000));
         },
         data(){
             return {
-                tab:'',
-                listData:[]
+                scroll:true,
+                listData:[],
+                index: {},
+                searchKey: {
+                    page: 1,
+                    limit: 20,
+                    tab: 'all',
+                    mdrender: true
+                }
             }
         },
         components:{
@@ -27,24 +38,47 @@
             getList(){
                 let _this=this;
                 axios.get('https://cnodejs.org/api/v1/topics',{
-                    params:{
-                        page:1,
-                        limit:20,
-                        tab:_this.tab||'all',
-                        mdrender:true
-                    }
+                    params:_this.searchKey
                 }).then(function(res){
-                    console.log(res);
+                    _this.scroll = true;
                     if(res.status===200){
-                        _this.listData=res.data.data;
+                        //_this.listData=res.data.data;
+                        if (res && res.data) {
+                            res.data.data.forEach(_this.mergeTopics);
+                        }
                     }else{
                         console.log('网络错误');
                     }
                 });
             },
-            changeTab:function(tab){
-                this.tab=tab;
+            mergeTopics(listData) {
+                if (typeof this.index[listData.id] === 'number') {//number
+                    const topicsIndex = this.index[listData.id];
+                    this.listData[topicsIndex] = listData;
+                } else {//undefined
+                    this.index[listData.id] = this.listData.length;
+                    this.listData.push(listData);
+                }
+            },
+            changeTab(tab){
+                // 如果是当前页面切换分类的情况
+                if (tab) {
+                    this.searchKey.tab = tab;
+                    this.listData = [];
+                    this.index = {};
+                }
+                this.searchKey.page = 1;
                 this.getList();
+            },
+            getScrollData(){
+                if(this.scroll){
+                    let totalheight=parseInt($(window).height(),20)+parseInt($(window).scrollTop(),20);
+                    if($(document).height()<=totalheight+200){
+                        this.scroll=false;
+                        this.searchKey.page+=1;
+                        this.getList();
+                    }
+                }
             }
         }
     }
