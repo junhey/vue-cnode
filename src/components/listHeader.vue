@@ -15,7 +15,7 @@
     export default{
         data(){
             return {
-                navSelect:''
+                navSelect:'all'
             }
         },
         methods:{

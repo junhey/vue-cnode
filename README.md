@@ -8,7 +8,7 @@
 # 安装依赖
 npm install
 
-# 开发和热加载在localhost:8080
+# 开发和热加载在localhost:8833
 npm run dev
 
 # 编译成生成环境，可在服务器下直接预览
