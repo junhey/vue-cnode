@@ -30,6 +30,16 @@ npm run build
 
 - [vue-cli guide](http://vuejs-templates.github.io/webpack/)
 
+## vue-cli
+
+除vue-cli自带的一些，需要另外安装
+```
+npm i element-ui -S
+npm i lodash -S
+npm i timeago.js -S
+
+```
+
 ## 实现清单
 
 [x] vue-cli 项目生成
