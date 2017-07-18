@@ -16,6 +16,13 @@ Vue.use(Alert);
 
 Vue.use(ElementUi)
 
+
+FastClick.attach(document.body);
+
+// 处理刷新的时候vuex被清空但是用户已经登录的情况
+if (window.sessionStorage.user) {
+    store.dispatch('setUserInfo', JSON.parse(window.sessionStorage.user));
+}
 $.ajaxSettings.crossDomain = true;
 
 Vue.config.productionTip = false
