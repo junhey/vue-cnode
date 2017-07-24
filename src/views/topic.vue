@@ -5,7 +5,7 @@
             <div class="topic-desc">
                 <ul>
                     <li>发布于:{{topicData.create_at | fotmatTimeStr(true)}}</li>
-                    <li>作者:{{topicData.author.loginname}}</li>
+                    <li v-if="topicData.author">作者:{{topicData.author.loginname}}</li>
                     <li>浏览量:{{topicData.visit_count}}次</li>
                     <li>来自:{{getTabInfo(topicData.tab,false,false,false)}}</li>
                 </ul>
@@ -21,6 +21,7 @@
     import axios from 'axios';
     import topicReply from '../components/topicReply';
     import utils from '../libs/utils.js';
+    import { Toast } from 'mint-ui';
     export default{
         filters:{
             //格式化时间
@@ -54,7 +55,7 @@
                         }
                         
                     }else{
-                        console.log('网络错误');
+                        Toast('网络错误');
                     }
                 });
             },

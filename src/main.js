@@ -2,8 +2,6 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
-import ElementUi from 'element-ui';
-import 'element-ui/lib/theme-default/index.css';
 
 import router from './router';
 import $ from 'webpack-zepto';
@@ -14,7 +12,10 @@ import Alert from './libs/alert';
 Vue.use(VueRouter);
 Vue.use(Alert);
 
-Vue.use(ElementUi)
+import Mint from 'mint-ui';
+import 'mint-ui/lib/style.css'
+Vue.use(Mint);
+
 
 
 FastClick.attach(document.body);

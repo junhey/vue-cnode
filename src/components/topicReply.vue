@@ -1,7 +1,7 @@
 <template>
    <div class="topic-reply">
         <div class="reply-item" v-for="(item,index) in replyData" :key="item.id">
-            <div class="user-info">{{item.author.loginname}} {{index}}楼  {{item.create_at | fotmatTimeStr(true)}}</div>
+            <div class="user-info">{{item.author.loginname}} {{index+1}}楼  {{item.create_at | fotmatTimeStr(true)}}</div>
             <div class="user-reply markdown-body    " v-html="item.content"></div>
         </div>
         
