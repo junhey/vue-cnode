@@ -54,9 +54,9 @@ npm i timeago.js -S
 
 [ ] vuex结合
 
-[ ] element-ui结合
+[x] element-ui结合
 
-[ ] vue-router的使用
+[x] vue-router的使用
 
 
 ## 参考

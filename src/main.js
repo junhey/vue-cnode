@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 
 import router from './router';
+import store from './vuex/user.js';
 import $ from 'webpack-zepto';
 import VueRouter from 'vue-router';
 import FastClick from 'fastclick';
@@ -31,7 +32,7 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
+  router,store,
   template: '<App/>',
   components: { App }
 })

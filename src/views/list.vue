@@ -10,13 +10,15 @@
     import utils from '../libs/utils.js';
     import axios from 'axios';
     import cnodeHeader from '../components/listHeader';
-    import listContent from '../components/listContent'
+    import listContent from '../components/listContent';
+    import { mapGetters } from 'vuex';
     export default{
         mounted(){
             //初始化数据
             this.getList();
             // 滚动加载
             $(window).on('scroll', utils.throttle(this.getScrollData, 300, 1000));
+            console.log(this.userInfo.userId);//获取登录状态
         },
         data(){
             return {
@@ -30,6 +32,11 @@
                     mdrender: true
                 }
             }
+        },
+        computed: {
+            ...mapGetters({
+                userInfo: 'getUserInfo'
+            })
         },
         components:{
             cnodeHeader,listContent

@@ -14,7 +14,7 @@
 <script>
     import $ from 'webpack-zepto';
     import axios from 'axios';
-
+    import { Toast } from 'mint-ui';
     export default {
         data() {
             return {
@@ -50,13 +50,13 @@
                     },
                     error: (res) => {
                         var error = JSON.parse(res.responseText);
-                        this.$alert(error.error_msg);
+                        Toast(error.error_msg);
                     }
                 });
             }
         },
         components: {
-            cnodeHeader
+            
         }
     };
 </script>
