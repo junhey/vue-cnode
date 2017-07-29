@@ -38,6 +38,7 @@
 <style lang="scss" scoped>
     .list-content{
         position: relative;
+        padding-top:40px;
         .list-item{
             position: relative;
             font-size:0;
