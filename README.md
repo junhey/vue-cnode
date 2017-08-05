@@ -42,21 +42,21 @@ npm i timeago.js -S
 
 ## 实现清单
 
-[x] vue-cli 项目生成
+- [x] vue-cli 项目生成
 
-[x] 组件化构造页面
+- [x] 组件化构造页面
 
-[x] axios请求数据
+- [x] axios请求数据
 
-[x] 父子组件数据传递
+- [x] 父子组件数据传递
 
-[x] 滚动底部加载
+- [x] 滚动底部加载
 
-[ ] vuex结合
+- [x] vuex结合
 
-[x] element-ui结合
+- [x] element-ui结合
 
-[x] vue-router的使用
+- [x] vue-router的使用
 
 
 ## 参考
